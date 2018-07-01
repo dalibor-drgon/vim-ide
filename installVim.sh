@@ -14,6 +14,7 @@ cd
 BASE_INSTALL_DIR=`basename $INSTALL_ROOT`
 if [ $INSTALL_ROOT != $VIM_ROOT ]; then
     mv $INSTALL_ROOT $VIM_ROOT
+    cd $VIM_ROOT 
 fi
 
 if [ -f $HOME/.vimrc -o -L $HOME/.vimrc ]; then 
@@ -40,8 +41,6 @@ sudo pip install pdb pylint
 
 echo -e "Initializing and checking out plugins submodules: "
 
-
-cd $VIM_ROOT 
 
 git submodule init 
 git submodule update 
