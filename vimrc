@@ -1171,3 +1171,7 @@ nmap <C-]> g<C-]>
 " ======================================================================================== 
 " rainbow levels toggle
 nmap <leader>rlt :RainbowLevelsToggle<cr>
+
+" Disable cursor underline caused by themes
+hi CursorLine term=none cterm=none
+
