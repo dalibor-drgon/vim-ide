@@ -6,18 +6,21 @@ RANDOM_NR=`shuf -i 1000-90000 -n 1`
 INSTALL_ROOT=`pwd`
 
 if [ -d $VIM_ROOT -o -L $VIM_ROOT ] && [ $INSTALL_ROOT != $VIM_ROOT ]; then 
+    echo "Moving old ~/.vim as ~/.vim_"$RANDOM_NR
     mv $VIM_ROOT $HOME/.vim_$RANDOM_NR
 fi 
 
-cd 
-# Move to ~/.vim
+cd ~
+# Move this dir to ~/.vim if neccesary
 BASE_INSTALL_DIR=`basename $INSTALL_ROOT`
 if [ $INSTALL_ROOT != $VIM_ROOT ]; then
+    echo "Moving this directory into ~/.vim"
     mv $INSTALL_ROOT $VIM_ROOT
-    cd $VIM_ROOT 
+    cd $VIM_ROOT
 fi
 
 if [ -f $HOME/.vimrc -o -L $HOME/.vimrc ]; then 
+    echo "Moving old ~/.vimrc as ~/.vimrc_"$RANDOM_NR
     mv $HOME/.vimrc $HOME/.vimrc_$RANDOM_NR
 fi
 
@@ -42,8 +45,10 @@ sudo pip install pdb pylint
 echo -e "Initializing and checking out plugins submodules: "
 
 
+cd $VIM_ROOT
+
 git submodule init 
-git submodule update 
+git submodule update
 #git submodule foreach git checkout master
 #git submodule foreach git pull origin master
 #restore all submodules to the commit which is approved by last master commit
@@ -86,4 +91,3 @@ while true; do
         * ) echo -e "Please select yes or no";;
     esac
 done
-
