@@ -1,13 +1,9 @@
-VIM as IDE by Damian Ziobro
-=======
+### VIM as IDE
 
-Configuration of VIM + plugins - it works as fully functional Integrated
-Development Environment (IDE)
+Install + clone latest plugins with script (root privileges needed to install packages with apt-get):
 
-![ScreenShot](https://raw.github.com/xmementoit/vim-ide/master/images/vim-ide.png)
-
-Video demonstration
--------------------
-
-Below you can see video demonstration of usage of VIM as IDE by Damian Ziobro:
-[![ScreenShot](https://raw.github.com/xmementoit/vim-ide/master/images/vim_ide_youtube.png)](http://www.youtube.com/watch?v=wVw_FEKKZs0)
+```
+git clone https://github.com/dalibor-drgon/vim-ide ~/.vim --depth=1
+chmod +x ~/.vim/installVim.sh
+~/.vim/installVim.sh
+```
