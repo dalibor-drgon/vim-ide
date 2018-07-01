@@ -10,13 +10,10 @@ if [ -d $VIM_ROOT -o -L $VIM_ROOT ]; then
 fi 
 
 cd 
-#checking whether install from vim-ide dir or dotfiles
+# Move to ~/.vim
 BASE_INSTALL_DIR=`basename $INSTALL_ROOT`
-if [ $BASE_INSTALL_DIR == "vim-ide" ];
-then
+if [ $INSTALL_ROOT != $VIM_ROOT ]; then
     mv $INSTALL_ROOT $VIM_ROOT
-else 
-    ln -s $INSTALL_ROOT $VIM_ROOT
 fi
 
 if [ -f $HOME/.vimrc -o -L $HOME/.vimrc ]; then 
