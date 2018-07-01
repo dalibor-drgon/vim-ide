@@ -86,8 +86,8 @@ set mouse=a
 
 " ========================================================================================
 "Settings for Searching and Moving
-nnoremap / /\v
-vnoremap / /\v
+"nnoremap / /\v
+"vnoremap / /\v
 set ignorecase
 set smartcase
 set incsearch
@@ -619,10 +619,10 @@ autocmd VimEnter * SignatureToggleSigns
 if &diff 
     "autocmd VimEnter * NERDTree .
 else 
-    autocmd VimEnter * NERDTree .
-    autocmd VimEnter * TagbarOpen
+    "autocmd VimEnter * NERDTree .
+    "autocmd VimEnter * TagbarOpen
     autocmd VimEnter * helptags ~/.vim/doc
-    autocmd VimEnter * exe 2 . "wincmd w"
+    "autocmd VimEnter * exe 2 . "wincmd w"
     autocmd VimEnter * call CheckIfMain()
     autocmd VimEnter * call LoadCScopeDatabases()
     autocmd VimEnter * call DetectFileType()
@@ -811,12 +811,61 @@ noremap gV `[v`]
 vmap v <Plug>(expand_region_expand)
 vmap r <Plug>(expand_region_shrink) 
 
+
 " ========================================================================================
 " VIM-airline  plugin 
 " https://github.com/bling/vim-airline   
 let g:airline#extensions#tabline#enabled = 1 
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|' 
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+"let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+
+let g:airline_powerline_fonts = 1
+
+" powerline and unicode symbols
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = ''
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = 'Ɇ'
+
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+
+let g:airline_extensions = ['branch', 'tabline']
+let g:airline#extensions#branch#format = 2
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#fugitiveline#enabled = 1
+
+" tabline
+let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#tabs_label = ''
+let g:airline#extensions#tabline#buf_label_first = 0
+let g:airline#extensions#tabline#show_tab_type = 0
+let g:airline#extensions#tabline#exclude_preview = 1
+let g:airline#extensions#tabline#show_buffers = 0
+
+let g:airline#extensions#tabline#tabs_label = ''
+let g:airline#extensions#tabline#overflow_marker = '…'
+let g:airline#extensions#tabline#keymap_ignored_filetypes = ['vimfiler', 'nerdtree']
+let g:airline#extensions#tabline#show_close_button = 0
+let airline#extensions#tabline#ignore_bufadd_pat =
+          \ '\c\vgundo|undotree|vimfiler|tagbar|nerd_tree'
 
 function! AirlineInit()
   let g:airline_section_a = airline#section#create(['mode'])
@@ -965,7 +1014,7 @@ nmap * *N
 " nmap <Leader><Leader>f <Plug>(easymotion-overwin-f)
 " 
 " " s{char}{char} to move to {char}{char}
-nmap s <Plug>(easymotion-overwin-f2)
+"nmap s <Plug>(easymotion-overwin-f2)
 " 
 " " Move to line
 " map <Leader><Leader>l <Plug>(easymotion-bd-jk)

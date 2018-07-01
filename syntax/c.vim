@@ -8,6 +8,8 @@ if exists("b:current_syntax")
   finish
 endif
 
+let c_no_curly_error=1
+
 let s:cpo_save = &cpo
 set cpo&vim
 
