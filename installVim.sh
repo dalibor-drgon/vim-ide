@@ -5,7 +5,7 @@ VIM_ROOT=$HOME/.vim
 RANDOM_NR=`shuf -i 1000-90000 -n 1`
 INSTALL_ROOT=`pwd`
 
-if [ -d $VIM_ROOT -o -L $VIM_ROOT ]; then 
+if [ -d $VIM_ROOT -o -L $VIM_ROOT ] && [ $INSTALL_ROOT != $VIM_ROOT ]; then 
     mv $VIM_ROOT $HOME/.vim_$RANDOM_NR
 fi 
 
