@@ -189,6 +189,10 @@ function <SID>TLoad()
 	if !line2byte( line( '$' ) + 1 ) == -1
 		return
 	endif
+  if filereadable(expand("%"))
+    " Another BufNewFile event might have handled this already.
+    return
+  endif
 
 	let l:file_ext = expand("%:e")
 	if l:file_ext == ""
