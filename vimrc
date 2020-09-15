@@ -539,20 +539,6 @@ function! IsFileAlreadyExists(filename)
 endfunction
 
 "==========================================================================="
-"Invoke this function if we are opening main.cpp or main.c file"
-function! CheckIfMain()
-    if !IsFileAlreadyExists(expand("%:t")) && expand("%:t:r") == "main" && expand("%:e") == "cpp"
-        execute 'normal! 1G 1000dd'
-        execute ':Template maincpp'
-        execute ':w'
-    elseif !IsFileAlreadyExists(expand("%:t")) && expand("%:t:r") == "main" && expand("%:e") == "c"
-        execute 'normal! 1G 1000dd' 
-        execute ':Template mainc'
-        execute ':w'
-    endif
-endfunction
-
-"==========================================================================="
 "Invoke this function when you would like to create new C++ class files (.cpp
 "and .h file)"
 function! CreateCppClassFiles(className)
@@ -577,7 +563,7 @@ function! CreateCppClassFiles(className)
 endfunction
 
 "create new command for creating cpp class"
-command! -nargs=1 NewCppClass call CreateCppClassFiles("<args>")
+" command! -nargs=1 NewCppClass call CreateCppClassFiles("<args>")
 
 "==========================================================================="
 " setting ctags 
@@ -623,7 +609,6 @@ else
     "autocmd VimEnter * TagbarOpen
     autocmd VimEnter * helptags ~/.vim/doc
     "autocmd VimEnter * exe 2 . "wincmd w"
-    autocmd VimEnter * call CheckIfMain()
     autocmd VimEnter * call LoadCScopeDatabases()
     autocmd VimEnter * call DetectFileType()
 
